@@ -15,10 +15,10 @@ describe UsersController do
       response.should be_success
     end
     
-    it "should find the right user" do
-      get :show, :id => @user.id, :sudomain => "app1"
-      assigns(:user).should == @user
-    end
+    # it "should find the right user" do
+    #   get :show, :id => @user.id, :sudomain => "app1"
+    #   assigns(:user).should == @user
+    # end
     
   end
 
