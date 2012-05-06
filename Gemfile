@@ -43,3 +43,9 @@ gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
 gem "therubyracer", :group => :assets, :platform => :ruby
 gem "simple_form"
 gem "will_paginate", ">= 3.0.3"
+gem "pg", "~> 0.13.2"
+gem "activeadmin"
+gem "formtastic", "~> 2.1.1"
+gem "cancan"
+gem 'acts_as_tenant'
+gem "thin"

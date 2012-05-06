@@ -8,5 +8,6 @@ FactoryGirl.define do
     password_confirmation 'please'
     # required if the Devise Confirmable module is used
     confirmed_at Time.now
+    account_id 1
   end
 end

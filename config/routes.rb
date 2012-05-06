@@ -1,4 +1,6 @@
 Rental::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   authenticated :user do
     root :to => 'home#index'
   end
