@@ -127,3 +127,23 @@ ActiveAdmin.setup do |config|
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
 end
+
+ActiveAdmin::ResourceController.class_eval do
+  before_filter :redirect_to_subdomain
+  def redirect_to_subdomain
+    unless current_user.account.name == request.subdomain
+      render :template => 'home/domain_error'
+    end
+  end
+  
+  protected
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+end
+
