@@ -3,10 +3,11 @@ HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'sass-rails',   '~> 3.2.3'
+gem "sprockets"
 gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "haml-rails", ">= 0.3.4", :group => :development
@@ -38,7 +39,7 @@ gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "guard-cucumber", ">= 0.6.1", :group => :development
 gem "devise", ">= 2.1.0.rc"
 gem "devise_invitable", ">= 1.0.1"
-gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
+gem "twitter-bootstrap-rails", ">= 2.0.3"
 gem "therubyracer", :group => :assets, :platform => :ruby
 gem "simple_form"
 gem "will_paginate", ">= 3.0.3"

@@ -289,6 +289,7 @@ DEPENDENCIES
   rspec-rails (>= 2.9.0.rc2)
   sass-rails (~> 3.2.3)
   simple_form
+  sprockets
   therubyracer
   thin
   twitter-bootstrap-rails (>= 2.0.3)
