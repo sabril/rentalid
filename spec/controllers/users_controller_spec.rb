@@ -4,7 +4,8 @@ describe UsersController do
 
   before (:each) do
     @account = FactoryGirl.create(:account)
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user, :account => Account.first)
+    @request.host = "#{@account.name}.localdev.com"
     sign_in @user
   end
 
@@ -15,10 +16,10 @@ describe UsersController do
       response.should be_success
     end
     
-    # it "should find the right user" do
-    #   get :show, :id => @user.id, :sudomain => "app1"
-    #   assigns(:user).should == @user
-    # end
+    it "should find the right user" do
+      get :show, :id => @user.id
+      assigns(:user).should == @user
+    end
     
   end
 
