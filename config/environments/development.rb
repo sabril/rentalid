@@ -53,4 +53,4 @@ Rental::Application.configure do
   config.assets.debug = true
 end
 
-SITE_URL = "moveninja.local"
+SITE_URL = "ngerental.local"

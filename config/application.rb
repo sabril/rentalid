@@ -71,5 +71,11 @@ module Rental
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.to_prepare do
+        Devise::Mailer.class_eval do 
+          helper :subdomain 
+        end
+      end
   end
 end

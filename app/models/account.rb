@@ -4,7 +4,7 @@ class Account < ActiveRecord::Base
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
   
   has_many :users, :dependent => :destroy
-  has_one :owner, :class_name => "User", :conditions => "roles_mask = 1"
+  has_one :owner, :class_name => "User"
   
   attr_accessible :name, :users_attributes
   

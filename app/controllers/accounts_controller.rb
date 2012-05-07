@@ -8,7 +8,12 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     if @account.save
-      redirect_to thank_you_path
+      @account.owner_id = @account.users.first[:id]
+      @account.save
+      @owner = @account.owner
+      @owner.roles = ["owner"]
+      @owner.save
+      redirect_to thank_you_path(:subdomain => @account.name)
     else
       render :new
     end
