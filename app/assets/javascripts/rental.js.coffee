@@ -3,7 +3,7 @@ window.Rental =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
+  init: -> 
 
 $(document).ready ->
   Rental.init()
