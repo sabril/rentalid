@@ -1,5 +1,4 @@
 class AccountsController < ApplicationController
-  layout 'new_account'
   def new
     @account = Account.new
     @account.users.build

@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
       else
         render :template => 'home/domain_error'
       end
+    else
+      if request.subdomain == "" || request.subdomain.nil?
+        redirect_to root_path(:subdomain => "www")
+      end
     end
   end
 end
