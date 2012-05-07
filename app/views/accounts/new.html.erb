@@ -1,0 +1,69 @@
+<div class="page-header">
+  <h1>Sign Up Now for an Instant Trial</h1>
+</div>
+<%= semantic_form_for [:admin, @account], :url => accounts_path, :html => {:class => "form-horizontal", :validate => true} do |f| %>
+  <section id="forms">
+    <div class="row">
+      <div class="span12">
+        <div class="row">
+          <div class="span8">
+            <% if @account.errors.any? %>
+              <div id="error_explanation" class="alert alert-error">
+                <a class="close" data-dismiss="alert">×</a>
+                <p><strong><%= pluralize(@account.errors.count, "error") %></strong> prohibited these informations from being saved:</p>
+                <ol>
+                <% @account.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ol>
+              </div>
+            <% end %>
+            <div>
+                <p class="">Try a Velox Platform limo site and software free, with no risk for 15 days to evaluate if it makes sense for your limo business. Just fill out the information below and a trial preview site will be created instantly for you to access the website and software system</p>
+            </div>
+            <%= f.semantic_fields_for :users do |a| %>
+              <div class="control-group">
+                <label class="control-label" for="focusedInput">Name</label>
+                <div class="controls">
+                  <%= a.text_field :name, :placeholder => "Enter your name", :class => "input-xlarge", :required => true  %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="focusedInput">Email</label>
+                <div class="controls">
+                  <%= a.text_field :email, :placeholder => "Enter your email", :class => "input-xlarge", :required => true  %>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="focusedInput">Password</label>
+                <div class="controls">
+                  <%= a.password_field :password, :placeholder => "Choose a password", :class => "input-xlarge", :required => true  %>
+                </div>
+              </div>
+            <% end %>
+            <div class="control-group">
+              <label class="control-label" for="focusedInput">Trial Site URL</label>
+              <div class="controls">
+                <div class=" input-prepend">
+                  <span class="add-on">http://</span>
+                  <%= f.text_field :name, :class => "input-xlarge span2", :required => true  %>
+                  <span>.<%=SITE_URL%></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>
+                <small>
+                  You are under no financial obligation. You agree to provide valid contact information including an email address. Your site will be live for a 15 day trial period. During the trial period, you will abide by our terms of service. After the trial period, you acknowledge that if you should choose not to subscribe, you may lose any of your work. 
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-primary" data-loading-text="Processing..." id="create_account">Create My Site Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

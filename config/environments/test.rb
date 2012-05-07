@@ -39,3 +39,4 @@ Rental::Application.configure do
   config.action_mailer.default_url_options = { :host => 'example.com' }
 
 end
+SITE_URL = "moveninja.local"
