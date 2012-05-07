@@ -6,5 +6,7 @@ class Account < ActiveRecord::Base
   has_many :users, :dependent => :destroy
   has_one :owner, :class_name => "User", :conditions => "roles_mask = 1"
   
+  attr_accessible :name, :users_attributes
+  
   accepts_nested_attributes_for :users
 end

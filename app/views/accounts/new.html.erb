@@ -40,6 +40,12 @@
                   <%= a.password_field :password, :placeholder => "Choose a password", :class => "input-xlarge", :required => true  %>
                 </div>
               </div>
+              <div class="control-group">
+                <label class="control-label" for="focusedInput">Confirm</label>
+                <div class="controls">
+                  <%= a.password_field :password_confirmation, :placeholder => "Type your password again", :class => "input-xlarge", :required => true  %>
+                </div>
+              </div>
             <% end %>
             <div class="control-group">
               <label class="control-label" for="focusedInput">Trial Site URL</label>

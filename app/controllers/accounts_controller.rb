@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   end
   
   def create
-    @account = Account.new(params[:tenant])
+    @account = Account.new(params[:account])
     if @account.save
       redirect_to thank_you_path
     else

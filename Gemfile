@@ -49,3 +49,4 @@ gem "formtastic", "~> 2.1.1"
 gem "cancan"
 gem 'acts_as_tenant'
 gem "thin"
+gem 'backbone-on-rails'
