@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
       current_account = Account.find_by_name(request.subdomain)
       if current_account
         set_current_tenant(current_account)
-      else
-        render :template => 'home/domain_error'
       end
     else
       if request.subdomain == "" || request.subdomain.nil?
