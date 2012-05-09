@@ -13,4 +13,6 @@ ActiveAdmin.register User do
   
   filter :name
   filter :email
+  
+  form :partial => "form"
 end

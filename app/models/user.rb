@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   #belongs_to :account
   acts_as_tenant(:account)
   
+  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :without_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} = 0"} }
+  
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end

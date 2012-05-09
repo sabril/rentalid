@@ -21,4 +21,14 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree .
+
+$(function() {
+  $('#create_account')
+    .click(function () {
+      var btn = $(this);
+      btn.button('loading');
+      setTimeout(function () {
+        btn.button('reset');
+      }, 10000000);
+    })
+});

@@ -4,9 +4,13 @@ class Account < ActiveRecord::Base
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
   
   has_many :users, :dependent => :destroy
-  has_one :owner, :class_name => "User"
+  # has_one :owner, :class_name => "User"
   
   attr_accessible :name, :users_attributes
   
   accepts_nested_attributes_for :users
+  
+  def owner
+    self.users.with_role(:owner).first
+  end
 end

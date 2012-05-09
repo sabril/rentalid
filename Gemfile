@@ -51,3 +51,4 @@ gem 'acts_as_tenant'
 gem "thin"
 gem 'backbone-on-rails'
 gem 'quiet_assets', :group => :development
+gem "faker"
