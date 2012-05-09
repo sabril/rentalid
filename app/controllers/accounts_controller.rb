@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
       @owner = @account.users.first
       @owner.roles = ["owner"]
       @owner.save
-      redirect_to thank_you_path(:subdomain => @account.name)
+      redirect_to thank_you_url(:subdomain => @account.name)
     else
       render :new
     end
