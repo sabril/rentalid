@@ -23,32 +23,32 @@
             </div>
             <%= f.semantic_fields_for :users do |a| %>
               <div class="control-group">
-                <label class="control-label" for="focusedInput">Name</label>
+                <label class="control-label" for="account_users_attributes_0_name">Name</label>
                 <div class="controls">
                   <%= a.text_field :name, :placeholder => "Enter your name", :class => "input-xlarge", :required => true  %>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="focusedInput">Email</label>
+                <label class="control-label" for="account_users_attributes_0_email">Email</label>
                 <div class="controls">
                   <%= a.text_field :email, :placeholder => "Enter your email", :class => "input-xlarge", :required => true  %>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="focusedInput">Password</label>
+                <label class="control-label" for="account_users_attributes_0_password">Password</label>
                 <div class="controls">
                   <%= a.password_field :password, :placeholder => "Choose a password", :class => "input-xlarge", :required => true  %>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="focusedInput">Confirm</label>
+                <label class="control-label" for="account_users_attributes_0_password_confirmation">Confirm</label>
                 <div class="controls">
                   <%= a.password_field :password_confirmation, :placeholder => "Type your password again", :class => "input-xlarge", :required => true  %>
                 </div>
               </div>
             <% end %>
             <div class="control-group">
-              <label class="control-label" for="focusedInput">Trial Site URL</label>
+              <label class="control-label" for="account_name">Trial Site URL</label>
               <div class="controls">
                 <div class=" input-prepend">
                   <span class="add-on">http://</span>

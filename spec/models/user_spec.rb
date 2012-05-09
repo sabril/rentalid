@@ -3,16 +3,24 @@ require 'spec_helper'
 describe User do
   
   before(:each) do
+    @account = FactoryGirl.create(:account)
     @attr = { 
       :name => "Example User",
       :email => "user@example.com",
       :password => "foobar",
       :password_confirmation => "foobar"
     }
+    
+    @user = User.new(@attr)
+    @user.account = @account
+    @user.save
   end
   
   it "should create a new instance given a valid attribute" do
-    User.create!(@attr)
+    user = User.new(@attr)
+    user.account = @account
+    user.save
+    user.should_not be_nil
   end
   
   it "should require an email address" do
@@ -37,14 +45,17 @@ describe User do
   end
   
   it "should reject duplicate email addresses" do
-    User.create!(@attr)
+    #User.create!(@attr)
     user_with_duplicate_email = User.new(@attr)
     user_with_duplicate_email.should_not be_valid
   end
   
   it "should reject email addresses identical up to case" do
     upcased_email = @attr[:email].upcase
-    User.create!(@attr.merge(:email => upcased_email))
+    user = User.new(@attr.merge(:email => upcased_email))
+    user.account = @account
+    user.save
+    #User.create!(@attr.merge(:email => upcased_email))
     user_with_duplicate_email = User.new(@attr)
     user_with_duplicate_email.should_not be_valid
   end
@@ -87,7 +98,7 @@ describe User do
   describe "password encryption" do
     
     before(:each) do
-      @user = User.create!(@attr)
+      #@user = User.create!(@attr)
     end
     
     it "should have an encrypted password attribute" do

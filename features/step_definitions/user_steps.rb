@@ -2,7 +2,7 @@
 
 def create_visitor
   @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
-    :password => "please", :password_confirmation => "please"}
+    :password => "please", :password_confirmation => "please", :account_name => "app1"}
 end
 
 def find_user
@@ -30,12 +30,13 @@ end
 
 def sign_up
   delete_user
-  visit '/users/sign_up'
+  visit '/accounts/new'
   fill_in "Name", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
-  fill_in "Password confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  fill_in "Confirm", :with => @visitor[:password_confirmation]
+  fill_in "Trial Site URL", :with => @visitor[:account_name]
+  click_button "Register"
   find_user
 end
 
@@ -155,23 +156,23 @@ Then /^I see a successful sign in message$/ do
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "A message with a confirmation link has been sent to your email address."
+  page.should have_content "Thanks for creating a new account. You will receive an email with information to access your account."
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  page.should have_content "Users email is invalid"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  page.should have_content "Users password can't be blank"
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "Users password doesn't match confirmation"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "Users password doesn't match confirmation"
 end
 
 Then /^I should see a signed out message$/ do
