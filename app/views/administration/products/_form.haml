@@ -3,6 +3,7 @@
   = f.inputs "Product Info" do
     = f.input :name
     = f.input :status, :collection => Product::STATUSES, :include_blank => false
+    = f.input :description, :as => :text
   = f.semantic_fields_for :products_rent_types do |r|
     = r.inputs "Rent Types" do
       = r.input :rent_type, :include_blank => false

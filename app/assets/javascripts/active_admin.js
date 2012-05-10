@@ -1,1 +1,10 @@
 //= require active_admin/base
+//= require twitter/bootstrap
+//= require underscore
+//= require backbone
+//= require rental
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers

@@ -54,3 +54,6 @@ gem 'quiet_assets', :group => :development
 gem "faker"
 gem "rabl"
 gem 'activerecord-postgres-hstore'
+gem "carrierwave"
+gem "mini_magick"
+gem "memcache-client"

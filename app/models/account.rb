@@ -1,9 +1,11 @@
 class Account < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :plan_id
   
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
   
   # relationships
+  belongs_to :plan
+  
   has_many :users, :dependent => :destroy
   has_many :products, :dependent => :destroy
   

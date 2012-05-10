@@ -11,10 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510041032) do
+ActiveRecord::Schema.define(:version => 20120510151750) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
+    t.integer  "plan_id",    :default => 1
     t.string   "time_zone",  :default => "Jakarta"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -34,6 +35,36 @@ ActiveRecord::Schema.define(:version => 20120510041032) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "number_of_products"
+    t.integer  "number_of_staffs"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "status",      :default => "Available"
+    t.hstore   "properties"
+    t.string   "updated_by"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "products", ["properties"], :name => "products_properties"
+
+  create_table "products_rent_types", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "rent_type_id"
+    t.decimal  "amount",       :default => 0.0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "rent_types", :force => true do |t|
     t.string   "type"

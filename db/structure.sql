@@ -49,6 +49,7 @@ SET default_with_oids = false;
 CREATE TABLE accounts (
     id integer NOT NULL,
     name character varying(255),
+    plan_id integer DEFAULT 1,
     time_zone character varying(255) DEFAULT 'Jakarta'::character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -108,6 +109,40 @@ CREATE SEQUENCE admin_notes_id_seq
 --
 
 ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
+
+
+--
+-- Name: plans; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE plans (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    number_of_products integer,
+    number_of_staffs integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE plans_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE plans_id_seq OWNED BY plans.id;
 
 
 --
@@ -293,6 +328,13 @@ ALTER TABLE active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_not
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE plans ALTER COLUMN id SET DEFAULT nextval('plans_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
 
 
@@ -331,6 +373,14 @@ ALTER TABLE ONLY accounts
 
 ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY plans
+    ADD CONSTRAINT plans_pkey PRIMARY KEY (id);
 
 
 --
@@ -455,3 +505,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120510125529');
 INSERT INTO schema_migrations (version) VALUES ('20120510125942');
 
 INSERT INTO schema_migrations (version) VALUES ('20120510133445');
+
+INSERT INTO schema_migrations (version) VALUES ('20120510151750');

@@ -8,9 +8,6 @@ ActiveAdmin.register User do
   index do
     column :email
     column :name
-    # column "Account" do |user|
-    #   user.account.name
-    # end
     column :roles do |user|
       user.roles.map {|r| r.capitalize }.join(', ')
     end
