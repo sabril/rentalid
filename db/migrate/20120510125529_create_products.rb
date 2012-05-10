@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :account_id
       t.string :name
       t.string :description
-      t.string :status, :default => "OK"
+      t.string :status, :default => "Available"
       t.hstore :properties
       t.string :updated_by
 

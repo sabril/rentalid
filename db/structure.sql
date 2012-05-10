@@ -119,7 +119,7 @@ CREATE TABLE products (
     account_id integer,
     name character varying(255),
     description character varying(255),
-    status character varying(255) DEFAULT 'OK'::character varying,
+    status character varying(255) DEFAULT 'Available'::character varying,
     properties hstore,
     updated_by character varying(255),
     created_at timestamp without time zone NOT NULL,

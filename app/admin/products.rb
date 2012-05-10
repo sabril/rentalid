@@ -1,8 +1,9 @@
 ActiveAdmin.register Product do
   menu :if => proc{ can?(:read, Product) }
-  scope :ok
+  scope :available
+  scope :rented
   scope :repaired
-  scope :broken
+  scope :not_available
   
   filter :name
   filter :description

@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_filter :check_signed_in
+  
   def new
     @account = Account.new
     @account.users.build
@@ -11,6 +13,14 @@ class AccountsController < ApplicationController
       redirect_to thank_you_url(:subdomain => @account.name)
     else
       render :new
+    end
+  end
+  
+  protected
+  
+  def check_signed_in
+    if current_user
+      redirect_to root_url(:subdomain => current_user.account.name)
     end
   end
 end

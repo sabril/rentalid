@@ -18,21 +18,24 @@ class Product < ActiveRecord::Base
     end
   end
   
-  STATUSES = %w{OK Maintenance Broken}
+  STATUSES = %w{Available Rented Maintenance Not\ Available}
   
-  STATUS_OK = 'OK'
+  STATUS_AVAILABLE = 'Available'
+  STATUS_RENTED = 'Rented'
   STATUS_REPAIRED  = 'Maintenance'
-  STATUS_BROKEN = "Broken"
+  STATUS_NOT_AVAILABLE = "Not Available"
   
-  scope :ok, where(:status => STATUS_OK)
+  scope :available, where(:status => STATUS_AVAILABLE)
+  scope :rented, where(:status => STATUS_RENTED)
   scope :repaired, where(:status => STATUS_REPAIRED)
-  scope :broken, where(:status => STATUS_BROKEN)
+  scope :not_available, where(:status => STATUS_NOT_AVAILABLE)
   
   def status_tag
     case self.status
-      when STATUS_OK then :bs_green
+      when STATUS_AVAILABLE then :bs_green
+      when STATUS_RENTED then :bs_orange
       when STATUS_REPAIRED then :bs_gray
-      when STATUS_BROKEN then :bs_red
+      when STATUS_NOT_AVAILABLE then :bs_red
     end
   end
 end
