@@ -129,7 +129,7 @@ ActiveAdmin.setup do |config|
 end
 
 ActiveAdmin::ResourceController.class_eval do
-  before_filter :redirect_to_subdomain
+  before_filter :redirect_to_subdomain, :set_current_timezone
   def redirect_to_subdomain
     unless current_user.account.name == request.subdomain
       render :template => 'home/domain_error'
@@ -143,6 +143,10 @@ ActiveAdmin::ResourceController.class_eval do
 
   def current_ability
     @current_ability ||= Ability.new(current_user)
+  end
+  
+  def set_current_timezone
+    Time.zone = current_user.account.time_zone
   end
   
   rescue_from CanCan::AccessDenied do |exception|

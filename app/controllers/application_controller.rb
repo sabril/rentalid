@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       if current_account
         unless current_account.name == "ccc"
           set_current_tenant(current_account)
+          Time.zone = current_account.time_zone
         else
           set_current_tenant(nil)
         end

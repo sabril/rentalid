@@ -1,4 +1,4 @@
 ActiveAdmin.register Account do
   controller.authorize_resource
-  menu :if => proc{ current_user.is?(:superman) }, :label => "Accounts"
+  menu :if => proc{ current_user.is?(:superman) }, :label => "Accounts", :parent => "Account Settings"
 end
