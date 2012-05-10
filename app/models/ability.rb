@@ -13,12 +13,13 @@ class Ability
   
   def owner
     admin
-    can :manage, User, :account_id => @user.account_id
+    can :manage, [User], :account_id => @user.account_id
   end
   
   def admin
     manager
-    can :read, User, :account_id => @user.account_id
+    can :manage, [User], :account_id => @user.account_id
+    cannot :destroy, [User]
   end
   
   def manager
