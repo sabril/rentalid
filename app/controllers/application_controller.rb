@@ -4,15 +4,21 @@ class ApplicationController < ActionController::Base
   before_filter :current_tenant
 
   def current_tenant
-    unless request.subdomain == "www"
+    unless request.subdomain.blank? || request.subdomain == "www"
       current_account = Account.find_by_name(request.subdomain)
       if current_account
-        set_current_tenant(current_account)
-      end
-    else
-      if request.subdomain == "" || request.subdomain.nil?
-        redirect_to root_path(:subdomain => "www")
+        unless current_account.name == "ccc"
+          set_current_tenant(current_account)
+        else
+          set_current_tenant(nil)
+        end
+      else
+        render "home/domain_error"
       end
     end
+  end
+  
+  def after_sign_in_path_for(resource)
+    root_url(:subdomain => resource.account.name)
   end
 end

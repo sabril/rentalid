@@ -134,6 +134,9 @@ ActiveAdmin::ResourceController.class_eval do
     unless current_user.account.name == request.subdomain
       render :template => 'home/domain_error'
     end
+    if current_user.account.name == "ccc"
+      ActsAsTenant.current_tenant = nil
+    end
   end
   
   protected
