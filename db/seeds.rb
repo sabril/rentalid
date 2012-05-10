@@ -8,7 +8,7 @@
 puts 'SETTING UP DEFAULT USER LOGIN'
 account = Account.create! :name => "ccc"
 user = User.create! :name => 'Superman', :email => 'support@ngerental.com', :password => 'qw3rty*', :password_confirmation => 'qw3rty*', :confirmed_at => Time.now.utc, :account => Account.first
-user.roles = ["owner"]
+user.roles = ["owner", "superman"]
 user.save
 
 puts 'New user created: ' << user.name

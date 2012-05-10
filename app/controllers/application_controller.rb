@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource)
+    if resource.status == User::STATUS_INACTIVE || resource.status == User::STATUS_BANNED
+      flash[:notice] = nil
+      flash[:error] = "That user is no longer active."
+      sign_out(:user)
+    end
     root_url(:subdomain => resource.account.name)
   end
 end

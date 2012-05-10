@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :account
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :account, :roles, :status
   # attr_accessible :title, :body
+  
+  STATUSES = %w{Active InActive Banned}
+  
+  default_scope :include => [:account]
   
   # relationships
   #belongs_to :account
@@ -28,4 +32,21 @@ class User < ActiveRecord::Base
   def is?(role)
     roles.include?(role.to_s)
   end
+  
+  STATUS_ACTIVE = 'Active'
+  STATUS_INACTIVE  = 'InActive'
+  STATUS_BANNED = 'Banned'
+  
+  scope :active, where(:status => STATUS_ACTIVE)
+  scope :inactive, where(:status => STATUS_INACTIVE)
+  scope :banned, where(:status => STATUS_BANNED)
+  
+  def status_tag
+    case self.status
+      when STATUS_ACTIVE then :bs_green
+      when STATUS_INACTIVE then :bs_gray
+      when STATUS_BANNED then :bs_red
+    end
+  end
+  
 end

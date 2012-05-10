@@ -1,0 +1,11 @@
+= semantic_form_for [:administration, @user] do |f|
+  = f.inputs "User Info" do
+    = f.input :name
+    = f.input :email
+    - if can?(:edit, @user)
+      - if @user.new_record?
+        = f.input :password
+        = f.input :password_confirmation
+      = f.input :roles, :collection => ROLES.reject {|r| %w{superman owner}.include?(r) }, :as => :check_boxes
+    = f.input :status, :collection => User::STATUSES, :include_blank => false
+  = f.buttons

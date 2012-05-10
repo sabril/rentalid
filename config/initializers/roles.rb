@@ -1,4 +1,4 @@
-ROLES = %w{owner admin manager salesrep crew banned}
+ROLES = %w{owner admin manager salesrep crew banned superman}
 
 # banned    = 1 0 0 0 0 0 = 32
 # crew      = 0 1 0 0 0 0 = 16

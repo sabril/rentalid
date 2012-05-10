@@ -6,12 +6,19 @@ class Ability
     @user.roles.each { |role| send(role) }
   end
   
+  def superman
+    admin
+    can :manage, :all
+  end
+  
   def owner
     admin
+    can :manage, User, :account_id => @user.account_id
   end
   
   def admin
     manager
+    can :read, User, :account_id => @user.account_id
   end
   
   def manager
