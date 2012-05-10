@@ -6,6 +6,6 @@
       - if @user.new_record?
         = f.input :password
         = f.input :password_confirmation
-      = f.input :roles, :collection => ROLES.reject {|r| %w{superman owner}.include?(r) }, :as => :check_boxes
+      = f.input :roles, :collection => ROLES.reject {|r| %w{superman owner banned}.include?(r) }, :as => :check_boxes
     = f.input :status, :collection => User::STATUSES, :include_blank => false
   = f.buttons
