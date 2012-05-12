@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :account do
-    name "app1"
+    name Faker::Name.first_name
   end
 end

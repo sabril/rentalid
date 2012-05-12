@@ -8,6 +8,7 @@ Rental::Application.routes.draw do
   devise_for :users
   resources :users, :only => [:show, :index]
   resources :accounts
+  #resources :products
   
   match "/thank_you", :to => "accounts#thank_you"
 end

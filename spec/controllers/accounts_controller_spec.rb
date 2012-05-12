@@ -8,8 +8,8 @@ describe AccountsController do
 
   describe "GET 'new'" do
     it "should redirect if there is an active session" do
-      @account = FactoryGirl.create(:account)
-      @user = FactoryGirl.create(:user, :account => Account.first)
+      @account ||= FactoryGirl.create(:account)
+      @user ||= FactoryGirl.create(:user, :account => Account.first)
       @request.host = "#{@account.name}.localdev.com"
       sign_in @user
       get :new

@@ -130,6 +130,7 @@ end
 
 ActiveAdmin::ResourceController.class_eval do
   before_filter :redirect_to_subdomain, :set_current_timezone
+  helper :all
   def redirect_to_subdomain
     unless current_user.account.name == request.subdomain
       render :template => 'home/domain_error'
@@ -140,6 +141,10 @@ ActiveAdmin::ResourceController.class_eval do
   end
   
   protected
+  
+  def user_for_paper_trail
+      user_signed_in? ? current_user : 'Unknown user'
+  end
 
   def current_ability
     @current_ability ||= Ability.new(current_user)

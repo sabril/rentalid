@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+  has_paper_trail
   attr_accessible :name, :plan_id
   
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
@@ -19,7 +20,7 @@ class Account < ActiveRecord::Base
   
   def create_settings_data
     # generate default data when creating new account
-    self.products.create(:name => "Sample", :updated_by => "system", :products_rent_types_attributes => [{ :amount => 1000.00, :rent_type_id => 1 }, { :amount => 10.00, :rent_type_id => 2 }, { :amount => 100.00, :rent_type_id => 3 }, { :amount => 1000.00, :rent_type_id => 4 }])
+    self.products.create(:name => "Sample", :products_rent_types_attributes => [{ :amount => 1000.00, :rent_type_id => 1 }, { :amount => 10.00, :rent_type_id => 2 }, { :amount => 100.00, :rent_type_id => 3 }, { :amount => 1000.00, :rent_type_id => 4 }])
   end
   
   def owner

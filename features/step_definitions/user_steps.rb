@@ -19,24 +19,28 @@ def create_unconfirmed_user
 end
 
 def assign_default_subdomain
-  Capybara.default_host = "http://www.#{SITE_URL}"
+  if @account
+    Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+  else
+    Capybara.default_host = "http://www.#{SITE_URL}"
+  end
 end
 
 def create_user
   create_visitor
   delete_user
-  @account = FactoryGirl.create(:account, :users_attributes => [@visitor])
+  @account ||= FactoryGirl.create(:account, :users_attributes => [@visitor])
   @account.create_owner
-  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+  assign_default_subdomain
 end
 
 def create_banned_user
   create_visitor
   delete_user
   @visitor[:status] = "Banned"
-  @account = FactoryGirl.create(:account, :users_attributes => [@visitor])
+  @account ||= FactoryGirl.create(:account, :users_attributes => [@visitor])
   @account.create_owner
-  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+  assign_default_subdomain
 end
 
 def create_superman_user
@@ -44,7 +48,7 @@ def create_superman_user
   delete_user
   @account = FactoryGirl.create(:account, :name => "ccc", :users_attributes => [FactoryGirl.attributes_for(:superman)])
   @account.create_owner
-  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+  assign_default_subdomain
 end
 
 def delete_user
@@ -66,6 +70,7 @@ def sign_up
 end
 
 def sign_in
+  assign_default_subdomain
   visit '/users/sign_in'
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
@@ -112,6 +117,7 @@ end
 ### WHEN ###
 When /^I sign in with valid credentials$/ do
   create_visitor
+  assign_default_subdomain
   sign_in
 end
 

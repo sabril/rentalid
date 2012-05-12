@@ -5,7 +5,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :status, :default => "Available"
-      t.string :updated_by
 
       t.timestamps
     end

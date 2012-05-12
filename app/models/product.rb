@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  attr_accessible :account_id, :description, :name, :updated_by, :status, :products_rent_types_attributes
+  has_paper_trail
+  attr_accessible :account_id, :description, :name, :status, :products_rent_types_attributes
   acts_as_tenant(:account)
   
   has_many :products_rent_types, :dependent => :destroy

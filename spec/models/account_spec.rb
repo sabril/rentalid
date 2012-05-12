@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Account do
   before(:each) do
     @attr = { 
-      :name => "Example"
+      :name => Faker::Name.first_name
     }
   end
   

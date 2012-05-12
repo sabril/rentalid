@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   
   # relationships
   #belongs_to :account
+  has_paper_trail
   acts_as_tenant(:account)
   
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
