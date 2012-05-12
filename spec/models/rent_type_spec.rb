@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe RentType do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @rent_type = FactoryGirl.create(:rent_type)
+  end
+  
+  it "should create a new instance given a valid attribute" do
+    @rent_type.name.should == "Hourly"
+  end
 end

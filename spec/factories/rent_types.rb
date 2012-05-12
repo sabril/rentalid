@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :rent_type do
-    account_id 1
-    type ""
+    type "Hourly"
+    description "test"
   end
 end

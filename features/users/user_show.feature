@@ -4,6 +4,6 @@ Feature: Show Users
   so I can know if the site has users
 
     Scenario: Viewing users
-      Given I exist as a user
-      When I look at the list of users
+      Given I am logged in
+      When I go to the owner page
       Then I should see my name

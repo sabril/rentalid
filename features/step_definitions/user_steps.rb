@@ -1,8 +1,10 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
-    :password => "please", :password_confirmation => "please", :account_name => "app1"}
+  # @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
+  #   :password => "please", :password_confirmation => "please", :account_name => "app1"}
+    
+  @visitor ||= FactoryGirl.attributes_for(:user)
 end
 
 def find_user
@@ -16,11 +18,33 @@ def create_unconfirmed_user
   visit '/users/sign_out'
 end
 
+def assign_default_subdomain
+  Capybara.default_host = "http://www.#{SITE_URL}"
+end
+
 def create_user
   create_visitor
   delete_user
-  @account = FactoryGirl.create(:account, :name => Faker::Name.first_name)
-  @user = FactoryGirl.create(:user, email: @visitor[:email], :account => Account.first)
+  @account = FactoryGirl.create(:account, :users_attributes => [@visitor])
+  @account.create_owner
+  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+end
+
+def create_banned_user
+  create_visitor
+  delete_user
+  @visitor[:status] = "Banned"
+  @account = FactoryGirl.create(:account, :users_attributes => [@visitor])
+  @account.create_owner
+  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
+end
+
+def create_superman_user
+  create_visitor
+  delete_user
+  @account = FactoryGirl.create(:account, :name => "ccc", :users_attributes => [FactoryGirl.attributes_for(:superman)])
+  @account.create_owner
+  Capybara.default_host = "http://#{@account.name}.#{SITE_URL}"
 end
 
 def delete_user
@@ -30,12 +54,13 @@ end
 
 def sign_up
   delete_user
+  assign_default_subdomain
   visit '/accounts/new'
   fill_in "Name", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   fill_in "Confirm", :with => @visitor[:password_confirmation]
-  fill_in "URL", :with => @visitor[:account_name]
+  fill_in "URL", :with => Faker::Name.last_name.downcase
   click_button "Register"
   find_user
 end
@@ -59,6 +84,20 @@ end
 
 Given /^I exist as a user$/ do
   create_user
+end
+
+Given /^I exist as a banned user$/ do
+  create_banned_user 
+end
+
+Then /^I see an inactive login message$/ do
+  page.should have_content "That user is no longer active."
+end
+
+
+Given /^I logged in as a superman user$/ do
+  create_superman_user
+  sign_in
 end
 
 Given /^I do not exist as a user$/ do
@@ -188,7 +227,23 @@ Then /^I should see an account edited message$/ do
 end
 
 Then /^I should see my name$/ do
-  pending "different user show"
+  #pending "different user show"
   # create_user
-  #   page.should have_content @user[:name]
+  page.should have_content "Rental"
+end
+
+Then /^show me the page$/ do
+  save_and_open_page
+end
+
+When /^I go to the owner page$/ do
+  visit user_path(@account.owner) # express the regexp above with the code you wish you had
+end
+
+When /^I go to the new account page$/ do
+  visit '/accounts/new' # express the regexp above with the code you wish you had
+end
+
+Then /^I should be redirected to root page$/ do
+  page.should have_content "Logout" # express the regexp above with the code you wish you had
 end

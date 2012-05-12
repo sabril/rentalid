@@ -1,22 +1,9 @@
 class Product < ActiveRecord::Base
-  attr_accessible :account_id, :description, :name, :properites, :updated_by, :status, :products_rent_types_attributes
+  attr_accessible :account_id, :description, :name, :updated_by, :status, :products_rent_types_attributes
   acts_as_tenant(:account)
   
   has_many :products_rent_types, :dependent => :destroy
   accepts_nested_attributes_for :products_rent_types
-  
-  %w{car_type car_number}.each do |key|
-    attr_accessible key
-    scope "has_#{key}", lambda { |value| where("properties @> (? => ?)", key, value) }
-
-    define_method(key) do
-      properties && properties[key]
-    end
-
-    define_method("#{key}=") do |value|
-      self.properties = (properties || {}).merge(key => value)
-    end
-  end
   
   STATUSES = %w{Available Rented Maintenance Not\ Available}
   

@@ -27,9 +27,11 @@ class Account < ActiveRecord::Base
   end
   
   def create_owner
-    @owner = self.users.first
-    @owner.roles = ["owner"]
-    @owner.save
+    if self.users.first
+      @owner = self.users.first
+      @owner.roles = ["owner"]
+      @owner.save
+    end
   end
   
 end

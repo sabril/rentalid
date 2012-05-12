@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
   def current_tenant
     unless request.subdomain.blank? || request.subdomain == "www"
-      current_account = Account.find_by_name(request.subdomain)
-      if current_account
-        unless current_account.name == "ccc"
-          set_current_tenant(current_account)
-          Time.zone = current_account.time_zone
+      @current_account = Account.find_by_name(request.subdomain)
+      if @current_account
+        unless @current_account.name == "ccc"
+          set_current_tenant(@current_account)
+          Time.zone = @current_account.time_zone
         else
           set_current_tenant(nil)
         end

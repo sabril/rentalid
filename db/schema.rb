@@ -50,13 +50,10 @@ ActiveRecord::Schema.define(:version => 20120510151750) do
     t.string   "name"
     t.string   "description"
     t.string   "status",      :default => "Available"
-    t.hstore   "properties"
     t.string   "updated_by"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
   end
-
-  add_index "products", ["properties"], :name => "products_properties"
 
   create_table "products_rent_types", :force => true do |t|
     t.integer  "product_id"

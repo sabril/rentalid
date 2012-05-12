@@ -53,7 +53,9 @@ gem 'backbone-on-rails'
 gem 'quiet_assets', :group => :development
 gem "faker"
 gem "rabl"
-gem 'activerecord-postgres-hstore'
+#gem 'activerecord-postgres-hstore'
 gem "carrierwave"
 gem "mini_magick"
 gem "memcache-client"
+gem "simplecov", :require => false, :group => :test
+gem 'paper_trail'

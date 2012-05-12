@@ -5,7 +5,7 @@ FactoryGirl.define do
     account_id 1
     name "MyString"
     description "MyString"
-    properites ""
     updated_by "MyString"
+    status "Available"
   end
 end
