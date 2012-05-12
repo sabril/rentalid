@@ -4,4 +4,31 @@
 
 // To customize the Active Admin interfaces, add your
 // styles here:
-@import "rental_bootstrap";
+//@import "theme.min";
+
+.status
+{
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #999999;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.status.bs_red
+{
+  background-color: #c43c35;
+}
+.status.bs_blue
+{
+  background-color: #62cffc;
+}
+.status.bs_orange
+{
+  background-color: #f89406;
+}
+.status.bs_green
+{
+  background-color: #46a546;
+}
