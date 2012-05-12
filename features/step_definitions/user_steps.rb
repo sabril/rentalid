@@ -235,7 +235,7 @@ end
 Then /^I should see my name$/ do
   #pending "different user show"
   # create_user
-  page.should have_content "Rental"
+  page.should have_content "Ngerental"
 end
 
 Then /^show me the page$/ do

@@ -1,6 +1,6 @@
 .page-header
   %h1 Sign Up Now for an Instant Trial
-= semantic_form_for @account, :url => accounts_path, :html => {:class => "form-horizontal", :validate => true} do |f|
+= simple_form_for @account, :url => accounts_path, :html => {:class => "form-horizontal", :validate => true} do |f|
   %section.forms
     .row
       .span12
@@ -17,26 +17,15 @@
                     %li= msg
             .top-message
               %p Create trial account
-            = f.semantic_fields_for :users do |a|
-              .control-group
-                = a.label :name, :class => "control-label"
-                .controls= a.text_field :name, :placeholder => "Enter your name", :class => "input-xlarge", :required => true
-              .control-group
-                = a.label :email, :class => "control-label"
-                .controls= a.text_field :email, :placeholder => "Enter your email", :class => "input-xlarge", :required => true
-              .control-group
-                = a.label :password, :class => "control-label"
-                .controls= a.password_field :password, :placeholder => "Choose a password", :class => "input-xlarge", :required => true 
-              .control-group
-                = a.label :password_confirmation, "Confirm", :class => "control-label"
-                .controls= a.password_field :password_confirmation, :placeholder => "Type your password again", :class => "input-xlarge", :required => true
-            .control-group
-              = f.label :name, "URL", :class => "control-label"
-              .controls
-                .input-prepend
-                  %span.add-on http://
-                  = f.text_field :name, :placeholder => "subdomain", :class => "input-xlarge span2", :required => true
-                  %span= ".#{SITE_URL}"
+            = f.simple_fields_for :users do |a|
+              = a.input :name, :placeholder => "Enter your name", :input_html => {:class => "input-xlarge"}, :required => true
+              = a.input :email, :placeholder => "Enter your email", :input_html => {:class => "input-xlarge"}, :required => true
+              = a.input :password, :placeholder => "Choose a password", :input_html => {:class => "input-xlarge"}, :required => true 
+              = a.input :password_confirmation, :placeholder => "Type your password again", :input_html => {:class => "input-xlarge"}, :label => "Confirm", :required => true
+            = f.input :name, :wrapper => :prepend, :label => "URL" do
+              = content_tag :span, "http://", :class => "add-on"
+              = f.input_field :name, :placeholder => "subdomain" , :class => "span2" 
+              = content_tag :span, "#{SITE_URL}", :class => "add-on"      
             .bottom-message
               %p
                 %small You are under no financial obligation. You agree to provide valid contact information including an email address. Your site will be live for a 15 day trial period. During the trial period, you will abide by our terms of service. After the trial period, you acknowledge that if you should choose not to subscribe, you may lose any of your work.
