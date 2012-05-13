@@ -11,6 +11,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
+    = render "layouts/ie_fix"
     = render "layouts/google_analytics" if Rails.env == "production"
   %body
     %header.navbar.navbar-fixed-top
