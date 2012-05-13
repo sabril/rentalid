@@ -10,7 +10,8 @@
       #plans
         #enterprise.plan
           %h2 Unlimited
-          %p.for-who No transaction fee!
+          %br
+          /%p.for-who No transaction fee!
           %p.feature 
             %strong Unlimited
             products
@@ -25,13 +26,19 @@
             transaction fee
           %p.price
             %strong
-              %span.currency-unit Rp.
+              %span.currency-unit IDR
               1.000.000
               %span.currency-unit /year
+          %p.price
+            %strong
+              %span.currency-unit IDR
+              100.000
+              %span.currency-unit /month
           = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
         #business.plan
           %h2 Business
-          %p.for-who Best value!
+          %br
+          /%p.for-who Best value!
           %p.feature 
             %strong 50
             products
@@ -46,13 +53,19 @@
             transaction fee
           %p.price
             %strong
-              %span.currency-unit Rp.
+              %span.currency-unit IDR
               500.000
               %span.currency-unit /year
+          %p.price
+            %strong
+              %span.currency-unit IDR
+              50.000
+              %span.currency-unit /month
           = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
         #pro.plan
           %h2 Pro
-          %p.for-who Start right!
+          %br
+          /%p.for-who Start right!
           %p.feature 
             %strong 100
             products
@@ -67,7 +80,12 @@
             transaction fee
           %p.price
             %strong
-              %span.currency-unit Rp.
+              %span.currency-unit IDR
               750.000
               %span.currency-unit /year
+          %p.price
+            %strong
+              %span.currency-unit IDR
+              75.000
+              %span.currency-unit /month
           = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
