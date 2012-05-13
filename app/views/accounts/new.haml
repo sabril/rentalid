@@ -1,5 +1,5 @@
 .page-header
-  %h1 Sign Up Now for an Instant Trial
+  %h1 Sign Up Now
 = simple_form_for @account, :url => accounts_path, :html => {:class => "form-horizontal", :validate => true} do |f|
   %section.forms
     .row
@@ -24,8 +24,8 @@
               = a.input :password_confirmation, :placeholder => "Type your password again", :input_html => {:class => "input-xlarge"}, :label => "Confirm", :required => true
             = f.input :name, :wrapper => :prepend, :label => "URL" do
               = content_tag :span, "http://", :class => "add-on"
-              = f.input_field :name, :placeholder => "subdomain" , :class => "span2" 
-              = content_tag :span, ".#{SITE_URL}", :class => "add-on"      
+              = f.input_field :name, :placeholder => "name of your brand/store" , :class => "span2"
+              = content_tag :span, ".#{SITE_URL}", :class => "add-on"        
             .bottom-message
               %p
                 %small You are under no financial obligation. You agree to provide valid contact information including an email address. Your site will be live for a 15 day trial period. During the trial period, you will abide by our terms of service. After the trial period, you acknowledge that if you should choose not to subscribe, you may lose any of your work.
