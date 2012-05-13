@@ -11,4 +11,5 @@ Rental::Application.routes.draw do
   #resources :products
   
   match "/thank_you", :to => "accounts#thank_you"
+  match "/plans", :to => "home#plans"
 end
