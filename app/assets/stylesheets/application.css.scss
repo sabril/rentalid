@@ -15,3 +15,118 @@
 .content > footer p, #gallery {
   text-align: center;
 }
+
+#green-bg .inner-wrapper {
+  z-index: 100;
+  position: relative;
+}
+
+.inner-wrapper {
+  width: 880px;
+  margin: 0 auto;
+}
+
+.sub-head {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+#plans {
+  background-color: transparent;
+  border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin: 40px 0 0 3%;
+  height: 420px;
+}
+
+#plans .plan#enterprise, #plans .plan#business {
+  border: 1px solid #7c2B08;
+  border-right: none;
+  border-top-left-radius: 5px;
+  -moz-border-radius-top-left: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottom-left: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+
+#plans .plan {
+  background-color: #fff4f4;
+  display: inline;
+  float: left;
+  text-align: center;
+  text-shadow: none;
+  width: 28%;
+  height: 420px;
+  box-shadow: 0px 4px 10px #464646;
+  -o-box-shadow: 0px 4px 10px #464646;
+  -moz-box-shadow: 0px 4px 10px #464646;
+  -webkit-box-shadow: 0px 4px 10px #464646;
+}
+
+#plans .plan#business {
+  width: 38%;
+  position: relative;
+  top: -25px;
+  box-shadow: 0px 2px 8px #464646;
+  -o-box-shadow: 0px 2px 8px #464646;
+  -moz-box-shadow: 0px 2px 8px #464646;
+  -webkit-box-shadow: 0px 2px 8px #464646;
+  background-color: white;
+  border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  height: 470px;
+  border: 1px solid #7c2b08;
+}
+
+#plans .plan h2 {
+  font-size: 26px;
+  text-transform: uppercase;
+  margin: 30px 0 0px;
+  color: #0c0401;
+  border: none;
+}
+
+#plans .plan#pro {
+  border-top: 1px solid #464646;
+  border-right: 1px solid #464646;
+  border-top-right-radius: 5px;
+  -moz-border-radius-top-right: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottom-right: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+#plans .plan .for-who {
+  font-size: 20px;
+  color: #8b6454;
+  margin: 0 0 30px;
+  font-style: italic;
+  font-family: 'Gochi Hand', cursive;
+}
+
+#plans .plan .feature {
+  color: #4c1b05;
+  font-size: 16px !important;
+}
+
+#plans .plan .price {
+  margin: 30px 0 20px;
+  color: #2c1003;
+  font-size: 16px !important;
+}
+
+#plans .plan .price strong {
+  font-size: 24px !important;
+}
+
+.currency-unit {
+  font-weight: normal;
+  font-size: 14px;
+  color: #999;
+}

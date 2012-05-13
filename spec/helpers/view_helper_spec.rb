@@ -20,4 +20,10 @@ describe ViewHelper do
       past_time(2.hours.ago).should == "about 2 hours ago"
     end
   end
+  
+  describe "show correct title" do
+    it "should show ngerental.com if there is no subdomain account" do
+      brand_title.should == "ngerental.com"
+    end
+  end
 end

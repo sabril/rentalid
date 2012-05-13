@@ -1,1 +1,73 @@
-%h1 Coming soon
+#green-bg.row
+  .span12
+    .inner-wrapper
+      %br
+      %h1#tagline No credit card required
+      %p.sub-head
+        Cancel or change plans at any time.
+        %br
+        Signup only takes just 30 seconds! Free trial for all plans.
+      #plans
+        #enterprise.plan
+          %h2 Unlimited
+          %p.for-who No transaction fee!
+          %p.feature 
+            %strong Unlimited
+            products
+          %p.feature 
+            %strong Unlimited
+            customers 
+          %p.feature 
+            %strong Unlimited
+            users
+          %p.feature 
+            %strong 0%
+            transaction fee
+          %p.price
+            %strong
+              %span.currency-unit Rp.
+              1.000.000
+              %span.currency-unit /year
+          = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
+        #business.plan
+          %h2 Business
+          %p.for-who Best value!
+          %p.feature 
+            %strong 50
+            products
+          %p.feature 
+            %strong 50
+            customers 
+          %p.feature 
+            %strong 5
+            users
+          %p.feature 
+            %strong 10%
+            transaction fee
+          %p.price
+            %strong
+              %span.currency-unit Rp.
+              500.000
+              %span.currency-unit /year
+          = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
+        #pro.plan
+          %h2 Pro
+          %p.for-who Start right!
+          %p.feature 
+            %strong 100
+            products
+          %p.feature 
+            %strong 100
+            customers 
+          %p.feature 
+            %strong 10
+            users
+          %p.feature 
+            %strong 5%
+            transaction fee
+          %p.price
+            %strong
+              %span.currency-unit Rp.
+              750.000
+              %span.currency-unit /year
+          = link_to "Start free trial", new_account_path, :class => "btn btn-primary"
