@@ -7,14 +7,14 @@
         .row
           .span8
             - if @account.errors.any?
-              / #error-explanation.alert.alert-error
-              /   %a.close{ "data-dismiss" => "alert"} x
-              /   %p
-              /     %strong= pluralize(@account.errors.count, "error")
-              /     prohibited these informations from being saved:
-              /   %ol
-              /     - @account.errors.full_messages.each do |msg|
-              /       %li= msg
+              #error-explanation.alert.alert-error
+                %a.close{ "data-dismiss" => "alert"} x
+                %p
+                  %strong= pluralize(@account.errors.count, "error")
+                  prohibited these informations from being saved:
+                  %ol
+                    - @account.errors.full_messages.each do |msg|
+                      %li= msg
             .top-message
             /  %p Create trial account
             = f.simple_fields_for :users do |a|
