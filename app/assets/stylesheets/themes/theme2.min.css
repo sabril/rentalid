@@ -477,9 +477,9 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .alert{padding:8px 35px 8px 14px;margin-bottom:18px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#8bc5e8;border:1px solid #7ed0e5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#1c628b;}
 .alert-heading{color:inherit;}
 .alert .close{position:relative;top:-2px;right:-21px;line-height:18px;}
-.alert-success{background-color:#ccddbb;border-color:#c6d4aa;color:#669533;}
-.alert-danger,.alert-error{background-color:#eddbe3;border-color:#e8d1df;color:#bd4247;}
-.alert-info{background-color:#edebe1;border-color:#e0d9cb;color:#817b58;}
+.alert-success{background-color:#DFF0D8;border-color:#D6E9C6;color:#468847;}
+.alert-danger,.alert-error{background-color:#F2DEDE;border-color:#EED3D7;color:#B94A48;}
+.alert-info{background-color:#D9EDF7;border-color:#BCE8F1;color:#3A87AD;}
 .alert-block{padding-top:14px;padding-bottom:14px;}
 .alert-block>p,.alert-block>ul{margin-bottom:0;}
 .alert-block p+p{margin-top:5px;}

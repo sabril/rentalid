@@ -1,16 +1,21 @@
+%a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
 = link_to "Ngerental", root_path, :class => 'brand'
-%ul.nav.pull-right
-  - if user_signed_in?
-    %li
-      = link_to('Logout', destroy_user_session_path, :method=>'delete')
-  - else
-    %li
-      = link_to('Login', new_user_session_path)
-  - if user_signed_in?
-    %li
-      = link_to('Administration', administration_dashboard_path) 
-    /%li
-    /  = link_to('Edit account', edit_user_registration_path)
-  - else
-    %li
-      = link_to('Sign up', new_account_path)
+.nav-collapse
+  %ul.nav.pull-right
+    - if user_signed_in?
+      %li
+        = link_to('Administration', administration_dashboard_path) 
+      /%li
+      /  = link_to('Edit account', edit_user_registration_path)
+    - else
+      %li
+        = link_to('Sign up', new_account_path)
+    - if user_signed_in?
+      %li
+        = link_to('Logout', destroy_user_session_path, :method=>'delete')
+    - else
+      %li
+        = link_to('Login', new_user_session_path)
