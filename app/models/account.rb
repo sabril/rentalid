@@ -1,11 +1,13 @@
 class Account < ActiveRecord::Base
-  has_paper_trail
+  #has_paper_trail
   attr_accessible :name, :plan_id
   
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
   
   # relationships
   belongs_to :plan
+  
+  has_one :address, :as => :addressable, :dependent => :destroy
   
   has_many :users, :dependent => :destroy
   has_many :products, :dependent => :destroy
@@ -14,9 +16,11 @@ class Account < ActiveRecord::Base
   attr_accessible :name, :users_attributes, :time_zone
   
   accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :address
   
   # callbacks
   after_create :create_settings_data
+  
   
   def create_settings_data
     # generate default data when creating new account

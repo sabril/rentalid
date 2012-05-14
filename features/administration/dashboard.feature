@@ -6,4 +6,4 @@ Feature: Dashboard
   Scenario: Show Dashboard
     Given I am logged in
     When I go to the dashboard page
-    Then I should see "Recent Updates"
+    Then I should see "Recent Orders"

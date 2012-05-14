@@ -12,10 +12,10 @@ plus = Plan.create(:name => "Plus Plan", :number_of_products => 30, :number_of_s
 premium = Plan.create(:name => "Premium Plan", :number_of_products => 100, :number_of_staffs => 30, :description => "")
 
 puts "Generate Default rent types"
-RentType.create!(:type => "Fixed", :description => "Customer will pay on fixed price", :updated_by => "system")
 RentType.create!(:type => "Hourly", :description => "Customer will pay hourly", :updated_by => "system")
 RentType.create!(:type => "Daily", :description => "Customer will pay daily", :updated_by => "system")
 RentType.create!(:type => "Monthly", :description => "Customer will pay monthly", :updated_by => "system")
+RentType.create!(:type => "Fixed", :description => "Customer will pay on fixed price", :updated_by => "system")
 
 
 puts 'SETTING UP DEFAULT USER LOGIN'
@@ -31,5 +31,8 @@ user2 = account2.users.create :name => 'Second User', :email => 'user2@example.c
 account2.create_owner
 puts 'New user created: ' << user2.name
 
-
+account3 = Account.create! :name => "newby", :plan_id => 1
+user3 = account3.users.create :name => 'guntur.pramono', :email => 'guntur.pramono@gmail.com', :password => '4p44j4b0l3h', :password_confirmation => '4p44j4b0l3h', :confirmed_at => Time.now.utc
+account3.create_owner
+puts 'New user created: ' << user3.name
 # create product for sample user

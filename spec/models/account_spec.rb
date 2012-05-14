@@ -20,8 +20,8 @@ describe Account do
   end
   
   it "should not create existing subdomain" do
-    @account = FactoryGirl.create(:account)
-    @account2 = Account.new(:name => "app1")
+    @account = Account.create!(@attr)
+    @account2 = Account.new(:name => @attr[:name])
     @account2.should_not be_valid
     @account2.should have(1).error_on(:name)
   end

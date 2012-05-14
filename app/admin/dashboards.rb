@@ -41,13 +41,25 @@ ActiveAdmin::Dashboards.build do
   # section "Membership Summary", :if => :memberships_enabled?
   # section "Membership Summary", :if => Proc.new { current_admin_user.account.memberships.any? }
   
+  section "Recent orders" do
+    
+  end
   
-  section "Recent updates" do
-    table_for Version.order('id desc').limit(20) do
-      column "Item" do |v| v.item.class end
-      column "Type" do |v| v.item_type.underscore.humanize end
-      column "Modified at" do |v| past_time(v.created_at) end
-     # column "Admin" do |v| link_to User.find(v.whodunnit).email, administration_user_path(User.find(v.whodunnit)) end
+  section "Recent product updates" do
+    table_for Product.order('updated_at desc').limit(20) do
+      column :name
+      column :status do |product|
+        status_tag product.status, product.status_tag
+      end
     end
   end
+  
+  # section "Recent updates" do
+  #   table_for Version.order('id desc').limit(20) do
+  #     column "Item" do |v| v.item.class end
+  #     column "Type" do |v| v.item_type.underscore.humanize end
+  #     column "Modified at" do |v| past_time(v.created_at) end
+  #    # column "Admin" do |v| link_to User.find(v.whodunnit).email, administration_user_path(User.find(v.whodunnit)) end
+  #   end
+  # end
 end

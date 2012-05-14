@@ -28,14 +28,14 @@ guard 'cucumber' do
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
 end
 
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-#   # Rails Assets Pipeline
-  watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
-end
+# guard 'livereload' do
+#   watch(%r{app/views/.+\.(erb|haml|slim)})
+#   watch(%r{app/helpers/.+\.rb})
+#   watch(%r{public/.+\.(css|js|html)})
+#   watch(%r{config/locales/.+\.yml})
+# #   # Rails Assets Pipeline
+#   watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
+# end
 
 # guard 'rails' do
 #   watch('Gemfile.lock')
