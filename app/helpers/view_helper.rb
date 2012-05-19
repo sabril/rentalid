@@ -4,6 +4,6 @@ module ViewHelper
   end
   
   def brand_title
-    (@current_account.nil? ? "ngerental.com" : "#{@current_account.name}.ngerental.com")
+    (@current_account.nil? ? "ngerental.com" : "#{@current_account.name}")
   end
 end

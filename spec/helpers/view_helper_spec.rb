@@ -25,5 +25,10 @@ describe ViewHelper do
     it "should show ngerental.com if there is no subdomain account" do
       brand_title.should == "ngerental.com"
     end
+    
+    it "should show account name if there is subdomain account" do
+      @current_account = FactoryGirl.create(:account)
+      brand_title.should == @current_account.name
+    end
   end
 end
