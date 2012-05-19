@@ -1,0 +1,13 @@
+.page-header
+  %h1 Sign In
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal", :validate => true}) do |f|
+  %section.forms
+    .row
+      .span12
+        .row
+          .span8
+            = f.input :email, :required => false, :autofocus => true
+            = f.input :password, :required => false
+            = f.input :remember_me, :as => :boolean, :inline_label => true, :label => false if devise_mapping.rememberable?
+        .form-actions
+          %button#create_account{ :class => "btn btn-primary", "data-loading-text" => "Please wait..."} Sign in
