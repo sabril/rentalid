@@ -27,4 +27,5 @@ class ApplicationController < ActionController::Base
     end
     root_url(:subdomain => resource.account.name)
   end
+
 end

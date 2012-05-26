@@ -23,4 +23,10 @@ class AccountsController < ApplicationController
       redirect_to root_url(:subdomain => current_user.account.name)
     end
   end
+  
+  def no_subdomain
+    if request.subdomain != "www"
+      redirect_to new_account_url(:subdomain => "www")
+    end
+  end
 end
