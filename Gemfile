@@ -60,3 +60,4 @@ gem "memcache-client"
 gem "simplecov", :require => false, :group => :test
 gem 'paper_trail'
 gem 'best_in_place'
+gem 'newrelic_rpm'
