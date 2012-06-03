@@ -1,9 +1,11 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.5'
 group :assets do
   gem 'uglifier', '>= 1.0.3'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
 end
 gem 'coffee-rails', '~> 3.2.1'
 gem 'sass-rails',   '~> 3.2.3'
@@ -61,3 +63,6 @@ gem "simplecov", :require => false, :group => :test
 gem 'paper_trail'
 gem 'best_in_place'
 gem 'newrelic_rpm'
+gem "active_model_serializers"
+gem "jquery-fileupload-rails", :git => "git://github.com/sabril/jquery-fileupload-rails.git"
+gem 'aa_associations', :git => "git://github.com/vigetlabs/active_admin_associations.git"

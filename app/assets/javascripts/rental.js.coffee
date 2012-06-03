@@ -4,6 +4,8 @@ window.Rental =
   Views: {}
   Routers: {}
   init: -> 
+    new Rental.Routers.Home()
+    Backbone.history.start()
 
 $(document).ready ->
   Rental.init()

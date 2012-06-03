@@ -74,9 +74,13 @@ module Rental
     config.assets.version = '1.0'
     
     config.to_prepare do
-        Devise::Mailer.class_eval do 
-          helper :subdomain 
-        end
+      Devise::Mailer.class_eval do 
+        helper :subdomain 
       end
+    end
+    
+    if defined? ::HamlCoffeeAssets
+     config.hamlcoffee.awesome = true
+    end
   end
 end
