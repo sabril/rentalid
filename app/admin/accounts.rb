@@ -1,6 +1,14 @@
 ActiveAdmin.register Account do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
   menu :if => proc{ current_user.is?(:superman) }, :label => "Accounts", :parent => "Account Settings"
+  
+  controller do
+    before_filter :redirect_to_my_account, :only => [:show]
+    
+    def redirect_to_my_account
+      redirect_to administration_my_account_path unless current_user.is?(:superman)
+    end
+  end
 end
 
 ActiveAdmin.register_page "My Account" do
@@ -11,22 +19,6 @@ ActiveAdmin.register_page "My Account" do
   end
   
   content do
-    panel "Account Details" do
-      attributes_table_for current_user.account do
-        row(:name)
-      end
-    end
-    
-    panel "Address" do
-      if current_user.account.address
-        attributes_table_for current_user.account.address do
-          row(:full_address) 
-        end
-      else
-        div do
-          "No address"
-        end
-      end
-    end
+    render "show"
   end
 end

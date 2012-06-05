@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
   menu :if => proc{ can?(:read, User) }, :parent => "Account Settings"
   scope :active
   scope :inactive

@@ -1,0 +1,11 @@
+.panel
+  = semantic_form_for [:administration, current_account] do |f|
+    = f.inputs "Account Details" do
+      %li#account_logo_input.file.input.optional
+        %label.label{:for => "account_logo"} Logo
+        = image_tag(current_account.logo_url(:medium))
+      = f.input :logo, :as => :file, :label => "&nbsp;"
+      = f.input :name
+      = f.input :plan, :include_blank => false
+      = f.input :time_zone, :include_blank => false
+    = f.actions

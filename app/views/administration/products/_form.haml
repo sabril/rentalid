@@ -1,4 +1,4 @@
-- 4.times{ @product.products_rent_types.build} if @product.new_record?
+- 1.times{ @product.products_rent_types.build} if @product.new_record?
 = semantic_form_for [:administration, @product] do |f|
   = f.inputs "Product Info" do
     = f.input :name

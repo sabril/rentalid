@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
   #has_paper_trail
-  attr_accessible :name, :plan_id
+  attr_accessible :name, :plan_id, :logo, :time_zone
   
   validates  :name, :presence   => true, :uniqueness => true, :subdomain  => true
   
@@ -21,6 +21,7 @@ class Account < ActiveRecord::Base
   # callbacks
   after_create :create_settings_data
   
+  mount_uploader :logo, LogoUploader
   
   def create_settings_data
     # generate default data when creating new account

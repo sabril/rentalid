@@ -41,6 +41,8 @@ gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "guard-cucumber", ">= 0.6.1", :group => :development
 gem "devise", ">= 2.1.0.rc"
 gem "devise_invitable", ">= 1.0.1"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
 gem "twitter-bootstrap-rails", ">= 2.0.3"
 gem "therubyracer", :group => :assets, :platform => :ruby
 gem "simple_form"
@@ -58,6 +60,7 @@ gem "rabl"
 #gem 'activerecord-postgres-hstore'
 gem "carrierwave"
 gem "mini_magick"
+gem "fog", "~> 1.3.1"
 gem "memcache-client"
 gem "simplecov", :require => false, :group => :test
 gem 'paper_trail'
@@ -66,3 +69,4 @@ gem 'newrelic_rpm'
 gem "active_model_serializers"
 gem "jquery-fileupload-rails", :git => "git://github.com/sabril/jquery-fileupload-rails.git"
 gem 'aa_associations', :git => "git://github.com/vigetlabs/active_admin_associations.git"
+gem "jquery-fileupload-rails", :git => "git://github.com/sabril/jquery-fileupload-rails.git"

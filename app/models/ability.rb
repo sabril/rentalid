@@ -13,8 +13,9 @@ class Ability
   
   def owner
     admin
-    can :destroy, [User]
-    #can :manage, [User, Product], :account_id => @user.account_id
+    can :manage, Account do |account|
+      account.id == @user.account_id
+    end
   end
   
   def admin
