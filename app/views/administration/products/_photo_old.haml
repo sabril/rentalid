@@ -1,0 +1,8 @@
+= f.semantic_fields_for :pictures do |p|
+  = p.inputs "Photos" do
+    - for pic in @product.pictures
+      %li#account_logo_input.file.input.optional
+        %label.label{:for => "account_logo"} Photos
+        = image_tag pic.photo_url(:thumb)
+    = p.input :photo, :as => :file, :label => "&nbsp;"
+= f.buttons

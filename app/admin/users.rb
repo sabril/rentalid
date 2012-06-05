@@ -1,5 +1,10 @@
 ActiveAdmin.register User do
-  controller.load_and_authorize_resource
+  controller do
+    load_and_authorize_resource :except => :index
+    def scoped_collection
+      end_of_association_chain.accessible_by(current_ability)
+    end
+  end
   menu :if => proc{ can?(:read, User) }, :parent => "Account Settings"
   scope :active
   scope :inactive

@@ -3,7 +3,7 @@ ActiveAdmin.register Account do
   menu :if => proc{ current_user.is?(:superman) }, :label => "Accounts", :parent => "Account Settings"
   
   controller do
-    before_filter :redirect_to_my_account, :only => [:show]
+    before_filter :redirect_to_my_account, :only => [:show, :index]
     
     def redirect_to_my_account
       redirect_to administration_my_account_path unless current_user.is?(:superman)
@@ -15,7 +15,7 @@ ActiveAdmin.register_page "My Account" do
   menu :if => proc{ current_user.is?(:owner) }, :parent => "Account Settings"
   
   action_item do
-    link_to "Edit Account", edit_administration_account_path(current_user.account), :class => ""
+    #link_to "Edit Account", edit_administration_account_path(current_user.account), :class => ""
   end
   
   content do

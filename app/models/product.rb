@@ -1,10 +1,15 @@
 class Product < ActiveRecord::Base
   #has_paper_trail
-  attr_accessible :account_id, :description, :name, :status, :products_rent_types_attributes
+  attr_accessible :account_id, :description, :name, :status, :products_rent_types_attributes, :pictures_attributes
   acts_as_tenant(:account)
   
   has_many :products_rent_types, :dependent => :destroy
   accepts_nested_attributes_for :products_rent_types
+  
+  has_many :pictures, :as => :picturable, :dependent => :destroy
+  accepts_nested_attributes_for :pictures
+  
+  validates_presence_of :name
   
   STATUSES = %w{Available Rented Maintenance Not\ Available}
   

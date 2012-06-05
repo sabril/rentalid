@@ -1,5 +1,6 @@
 - 1.times{ @product.products_rent_types.build} if @product.new_record?
-= semantic_form_for [:administration, @product] do |f|
+- 1.times{ @product.pictures.build} if @product.new_record?
+= semantic_form_for [:administration, @product], :html => {:multipart => true, :id => "fileupload"} do |f|
   = f.inputs "Product Info" do
     = f.input :name
     = f.input :status, :collection => Product::STATUSES, :include_blank => false
@@ -8,4 +9,5 @@
     = r.inputs "Rent Types" do
       = r.input :rent_type, :include_blank => false
       = r.input :amount
-  = f.buttons
+  / = render :partial => "photo", :locals => {:f => f}
+  = render :partial => "photo_old", :locals => { :f => f }
