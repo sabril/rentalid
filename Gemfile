@@ -1,7 +1,7 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
 group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'haml_coffee_assets'
@@ -52,7 +52,7 @@ gem "activeadmin"
 gem "formtastic", "~> 2.1.1"
 gem "cancan"
 gem 'acts_as_tenant'
-gem "thin"
+#gem "thin"
 gem 'backbone-on-rails'
 gem 'quiet_assets', :group => :development
 gem "faker"

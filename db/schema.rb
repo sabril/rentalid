@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605035115) do
+ActiveRecord::Schema.define(:version => 20120624162535) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -54,6 +54,34 @@ ActiveRecord::Schema.define(:version => 20120605035115) do
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
+
+  create_table "members", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "email"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "order_details", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "products_rent_type_id"
+    t.integer  "quantity"
+    t.float    "amount"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "member_id"
+    t.date     "o_date"
+    t.float    "total"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pictures", :force => true do |t|
     t.integer  "picturable_id"
