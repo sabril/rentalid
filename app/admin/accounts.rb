@@ -11,8 +11,8 @@ ActiveAdmin.register Account do
   end
 end
 
-ActiveAdmin.register_page "My Account" do
-  menu :if => proc{ current_user.is?(:owner) }, :parent => "Account Settings"
+ActiveAdmin.register_page "MyAccount" do
+  menu :if => proc{ current_user.is?(:owner) }, :parent => "Account Settings", :label => "My Account"
   
   action_item do
     #link_to "Edit Account", edit_administration_account_path(current_user.account), :class => ""

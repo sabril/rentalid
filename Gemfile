@@ -48,8 +48,8 @@ gem "therubyracer", :group => :assets, :platform => :ruby
 gem "simple_form"
 gem "will_paginate", ">= 3.0.3"
 gem "pg", "~> 0.13.2"
-gem "activeadmin"
-gem "formtastic", "~> 2.1.1"
+gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
+gem "formtastic"#, "~> 2.1.1"
 gem "cancan"
 gem 'acts_as_tenant'
 #gem "thin"
@@ -69,4 +69,3 @@ gem 'newrelic_rpm'
 gem "active_model_serializers"
 gem "jquery-fileupload-rails", :git => "git://github.com/sabril/jquery-fileupload-rails.git"
 gem 'aa_associations', :git => "git://github.com/vigetlabs/active_admin_associations.git"
-gem "jquery-fileupload-rails", :git => "git://github.com/sabril/jquery-fileupload-rails.git"

@@ -18,6 +18,7 @@ ActiveAdmin.register Product do
   form :partial => "form"
   
   index do
+    selectable_column
     column :name
     column :status do |product|
       status_tag product.status, product.status_tag
