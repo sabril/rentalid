@@ -14,14 +14,14 @@ class Fixed < RentType
   
 end
 
-class Hourly < RentType
+class Hour < RentType
   
 end
 
-class Daily < RentType
+class Day < RentType
   
 end
 
-class Monthly < RentType
+class Month < RentType
   
 end

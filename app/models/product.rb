@@ -35,4 +35,8 @@ class Product < ActiveRecord::Base
   def featured_picture
     self.pictures.first
   end
+  
+  def featured_rent_type
+    self.products_rent_types.first
+  end
 end

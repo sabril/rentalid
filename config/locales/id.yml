@@ -1,4 +1,9 @@
 id:
+  hour: jam
+  day: hari
+  month: bulan
+  fixed: fix
+  year: tahun
   date:
     abbr_day_names:
     - Min

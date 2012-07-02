@@ -1,5 +1,10 @@
 = content_tag_for :li, product, :class => "span3" do |li|
   = product.featured_picture ? link_to(image_tag(product.featured_picture.photo_url(:medium)), "#", :class => "thumbnail") : link_to(image_tag("http://placehold.it/260x180"), "#", :class => "thumbnail")
+  %p.price
+    %strong
+      = number_to_currency product.featured_rent_type.amount, :precision => 0, :unit => "Rp "
+    %span.currency-unit /
+    = t(product.featured_rent_type.rent_type.type.downcase).capitalize
   .caption
     %br
     %p 

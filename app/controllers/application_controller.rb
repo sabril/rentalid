@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   set_current_tenant_through_filter
-  before_filter :current_tenant
+  before_filter :current_tenant, :set_locale
 
   def current_tenant
     unless request.subdomain.blank? || request.subdomain == "www"
@@ -28,4 +28,7 @@ class ApplicationController < ActionController::Base
     root_url(:subdomain => resource.account.name)
   end
 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 end
