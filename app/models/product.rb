@@ -31,4 +31,8 @@ class Product < ActiveRecord::Base
       when STATUS_NOT_AVAILABLE then :bs_red
     end
   end
+  
+  def featured_picture
+    self.pictures.first
+  end
 end
