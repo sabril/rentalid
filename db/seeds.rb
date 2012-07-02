@@ -12,8 +12,8 @@ plus = Plan.create(:name => "Plus Plan", :number_of_products => 30, :number_of_s
 premium = Plan.create(:name => "Premium Plan", :number_of_products => 100, :number_of_staffs => 30, :description => "")
 
 puts "Generate Default rent types"
-RentType.create!(:type => "Hour", :description => "Customer will pay hourly", :updated_by => "system")
 RentType.create!(:type => "Day", :description => "Customer will pay daily", :updated_by => "system")
+RentType.create!(:type => "Hour", :description => "Customer will pay hourly", :updated_by => "system")
 RentType.create!(:type => "Month", :description => "Customer will pay monthly", :updated_by => "system")
 RentType.create!(:type => "Fixed", :description => "Customer will pay on fixed price", :updated_by => "system")
 

@@ -23,6 +23,9 @@ ActiveAdmin.register Product do
     column :status do |product|
       status_tag product.status, product.status_tag
     end
+    column "Harga Sewa" do |product|
+      "#{number_to_currency(product.featured_rent_type.amount, :precision => 0, :unit => "Rp ")} / #{t(product.featured_rent_type.rent_type.type.downcase).capitalize}"
+    end
     default_actions if can?(:manage, Product)
   end
 end
