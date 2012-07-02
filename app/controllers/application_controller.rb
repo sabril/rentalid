@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
       else
         render "home/domain_error"
       end
+    else
+      set_current_tenant(nil)
     end
   end
   

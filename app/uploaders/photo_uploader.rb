@@ -19,6 +19,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+  
+  process :quality => 85
 
   version :thumb do
     process :resize_to_fill => [100,100]
@@ -26,6 +28,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   
   version :medium do
     process :resize_to_fill => [260,180]
+    process :quality => 85
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

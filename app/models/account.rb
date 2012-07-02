@@ -26,7 +26,7 @@ class Account < ActiveRecord::Base
   
   def create_settings_data
     # generate default data when creating new account
-    self.products.create(:name => "Sample", :products_rent_types_attributes => [{ :amount => 1000.00, :rent_type_id => 1 }, { :amount => 10.00, :rent_type_id => 2 }, { :amount => 100.00, :rent_type_id => 3 }, { :amount => 1000.00, :rent_type_id => 4 }])
+    self.products.create(:name => "Sample", :products_rent_types_attributes => [{ :amount => 500000, :rent_type_id => 1 }])
   end
   
   def owner
